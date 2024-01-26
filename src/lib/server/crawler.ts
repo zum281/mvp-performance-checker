@@ -1,4 +1,4 @@
-import { PlaywrightCrawler } from "crawlee";
+import { PlaywrightCrawler, Sitemap } from "crawlee";
 
 export const crawlWebsite = async (url: string) => {
 	return new Promise(async (resolve) => {
@@ -25,4 +25,9 @@ export const crawlWebsite = async (url: string) => {
 
 		resolve(allUrlsArray);
 	});
+};
+
+export const crawlSitemap = async (sitemapUrl: string) => {
+	const { urls } = await Sitemap.load(sitemapUrl);
+	return urls;
 };

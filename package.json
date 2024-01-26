@@ -16,7 +16,9 @@
 		"obj-str": "^1.1.0",
 		"playwright": "^1.41.0",
 		"react": "^18",
-		"react-dom": "^18"
+		"react-dom": "^18",
+		"react-hook-form": "^7.49.3",
+		"react-tabs": "^6.0.2"
 	},
 	"devDependencies": {
 		"@types/node": "^20",

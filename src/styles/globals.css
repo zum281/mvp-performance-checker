@@ -32,3 +32,17 @@
     50%  {background-position: calc(100%/-4) -14px,calc(100%/4) 14px}
     100% {background-position: calc(100%/4)  -14px,calc(3*100%/4) 14px}
 }
+
+.react-tabs {
+  width: 100% !important;
+}
+.react-tabs__tab-list {
+  border-color: var(--color-blue-500) !important;
+}
+
+.react-tabs__tab--selected {
+  background-color: var(--color-blue-500) !important;
+  color: var(--color-white) !important;
+  border: none !important;
+  border-radius: 0 !important;
+}

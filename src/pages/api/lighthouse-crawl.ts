@@ -1,8 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import lighthouse from "lighthouse";
-import type { Flags, Result } from "lighthouse";
-import * as chromeLauncher from "chrome-launcher";
 import { crawlWebsite } from "@/lib/server/crawler";
+import * as chromeLauncher from "chrome-launcher";
+import type { Flags, Result } from "lighthouse";
+import lighthouse from "lighthouse";
+import type { NextApiRequest, NextApiResponse } from "next";
 import { isValidUrl, normalizeUrl } from "../../lib/server/utils";
 
 type ResponseData = {
@@ -16,7 +16,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 	const siteUrl = normalizeUrl(siteName);
 
 	const pages: string[] = (await crawlWebsite(siteUrl)) as string[];
-	console.log(pages);
 
 	const chrome = await chromeLauncher.launch({ chromeFlags: ["--headless"] });
 	const options: Flags = { logLevel: "info", output: "json", onlyCategories: ["performance"], port: chrome.port };
@@ -28,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 			reports.push(runnerResult!.lhr);
 		}
 
-		await chrome.kill();
+		chrome.kill();
 
 		res.status(200).json({ reports });
 	} catch (error) {
