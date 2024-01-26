@@ -1,5 +1,4 @@
-import { crawlSitemap } from "@/lib/server/crawler";
-import { isValidUrl, normalizeUrl } from "@/lib/server/utils";
+import { isValidUrl } from "@/lib/server/utils";
 import * as chromeLauncher from "chrome-launcher";
 import type { Flags, Result } from "lighthouse";
 import lighthouse from "lighthouse";
@@ -11,20 +10,18 @@ type ResponseData = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
-	const sitemapUrl: string = String(JSON.parse(req.body).sitemapUrl);
+	const urlList: string[] = JSON.parse(req.body).urlList;
 
-	if (!isValidUrl(sitemapUrl)) res.status(400);
-	const siteUrl = normalizeUrl(sitemapUrl);
-
-	const pages: string[] = await crawlSitemap(siteUrl);
-	console.log(pages);
+	for (const url of urlList) {
+		if (!isValidUrl(url)) res.status(400);
+	}
 
 	const chrome = await chromeLauncher.launch({ chromeFlags: ["--headless"] });
 	const options: Flags = { logLevel: "info", output: "json", onlyCategories: ["performance"], port: chrome.port };
 
 	try {
 		const reports = [];
-		for (const page of pages) {
+		for (const page of urlList) {
 			const runnerResult = await lighthouse(page, options);
 			reports.push(runnerResult!.lhr);
 		}
