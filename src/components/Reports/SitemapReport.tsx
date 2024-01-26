@@ -47,7 +47,7 @@ export const SitemapReport: FC = () => {
 							validate: validateUrl,
 						})}
 						autoComplete="off"
-						placeholder="https://example.com"
+						placeholder="https://example.com/sitemap.xml"
 					/>
 				</div>
 				<SubmitButton />
