@@ -4,7 +4,7 @@ import { FunctionComponent as FC, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ReportList } from "../ui/ReportList";
 import { Form } from "../ui/form/Form";
-import { Input } from "../ui/form/Input";
+import Input from "../ui/form/Input";
 import { SubmitButton } from "../ui/form/SubmitButton";
 
 export const SitemapReport: FC = () => {

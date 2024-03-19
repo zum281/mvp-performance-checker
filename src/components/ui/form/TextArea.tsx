@@ -1,7 +1,8 @@
 import objStr from "obj-str";
 import { TextareaHTMLAttributes, forwardRef, useMemo } from "react";
 import { FieldError } from "react-hook-form";
-export const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ label, error, ...rest }, ref) => {
+
+const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ label, error, ...rest }, ref) => {
 	const labelClasses = useMemo(
 		() =>
 			objStr({
@@ -37,4 +38,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ label, error, 
 		</>
 	);
 });
+
+export default TextArea;
+
 type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string; error: FieldError | undefined };

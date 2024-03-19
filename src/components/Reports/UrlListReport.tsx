@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { ReportList } from "../ui/ReportList";
 import { Form } from "../ui/form/Form";
 import { SubmitButton } from "../ui/form/SubmitButton";
-import { TextArea } from "../ui/form/TextArea";
+import TextArea from "../ui/form/TextArea";
 
 export const UrlListReport: FC = () => {
 	const {

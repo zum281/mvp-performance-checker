@@ -2,7 +2,7 @@ import objStr from "obj-str";
 import { InputHTMLAttributes, forwardRef, useMemo } from "react";
 import { FieldError } from "react-hook-form";
 
-export const Input = forwardRef<HTMLInputElement, Props>(({ label, error, ...rest }, ref) => {
+const Input = forwardRef<HTMLInputElement, Props>(({ label, error, ...rest }, ref) => {
 	const labelClasses = useMemo(
 		() =>
 			objStr({
@@ -38,4 +38,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(({ label, error, ...res
 		</>
 	);
 });
+
+export default Input;
+
 type Props = InputHTMLAttributes<HTMLInputElement> & { label: string; error: FieldError | undefined };
