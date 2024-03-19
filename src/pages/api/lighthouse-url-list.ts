@@ -26,6 +26,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
 			reports.push(runnerResult!.lhr);
 		}
 
+		console.log(reports);
+
 		chrome.kill();
 
 		res.status(200).json({ reports });
