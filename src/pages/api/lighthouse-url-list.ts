@@ -9,7 +9,7 @@ type ResponseData = {
 	error?: any;
 };
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+export async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
 	const urlList: string[] = JSON.parse(req.body).urlList;
 
 	for (const url of urlList) {
