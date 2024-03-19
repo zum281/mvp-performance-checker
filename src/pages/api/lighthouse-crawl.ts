@@ -10,7 +10,7 @@ type ResponseData = {
 	error?: any;
 };
 
-export async function POST(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
 	const siteName: string = String(JSON.parse(req.body).sitename);
 	if (!isValidUrl(siteName)) res.status(400);
 	const siteUrl = normalizeUrl(siteName);

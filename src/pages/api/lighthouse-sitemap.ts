@@ -10,7 +10,7 @@ type ResponseData = {
 	error?: any;
 };
 
-export async function POST(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
 	const sitemapUrl: string = String(JSON.parse(req.body).sitemapUrl);
 
 	if (!isValidUrl(sitemapUrl)) res.status(400);
