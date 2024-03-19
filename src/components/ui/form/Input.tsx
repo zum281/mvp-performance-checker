@@ -39,6 +39,8 @@ const Input = forwardRef<HTMLInputElement, Props>(({ label, error, ...rest }, re
 	);
 });
 
+Input.displayName = "Input";
+
 export default Input;
 
 type Props = InputHTMLAttributes<HTMLInputElement> & { label: string; error: FieldError | undefined };

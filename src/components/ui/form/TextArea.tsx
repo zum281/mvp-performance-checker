@@ -39,6 +39,8 @@ const TextArea = forwardRef<HTMLTextAreaElement, Props>(({ label, error, ...rest
 	);
 });
 
+TextArea.displayName = "TextArea";
+
 export default TextArea;
 
 type Props = TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string; error: FieldError | undefined };
