@@ -16,7 +16,7 @@ const config: Config = {
 	},
 	plugins: [
 		function ({ addBase, theme }: any) {
-			function extractColorVars(colorObj: any, colorGroup = "") {
+			function extractColorVars(colorObj: any, colorGroup = ""):any {
 				return Object.keys(colorObj).reduce((vars, colorKey) => {
 					const value = colorObj[colorKey];
 
